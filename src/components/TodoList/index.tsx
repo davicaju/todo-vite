@@ -4,8 +4,13 @@ interface TodoListProps {
     title: string;
     isCompleted: boolean;
   };
+  onDeleteTask: (id: number) => void;
 }
 
-export function TodoList({ task }: TodoListProps) {
-  return <li key={task.id}>{task.title}</li>;
+export function TodoList({ task, onDeleteTask }: TodoListProps) {
+  return (
+    <li key={task.id}>
+      {task.title} <button onClick={() => onDeleteTask(task.id)}>delete</button>
+    </li>
+  );
 }

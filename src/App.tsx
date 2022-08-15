@@ -28,6 +28,12 @@ export function App() {
     setTitle("");
   }
 
+  function handleDeleteTask(id: number) {
+    const newTasks = tasks.filter((task) => task.id !== id);
+
+    setTasks(newTasks);
+  }
+
   return (
     <div className="App">
       <Header />
@@ -38,7 +44,7 @@ export function App() {
       />
       {tasks.map((task) => (
         <ul>
-          <TodoList task={task} />
+          <TodoList task={task} onDeleteTask={handleDeleteTask} />
         </ul>
       ))}
     </div>
